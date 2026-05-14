@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>INVI - CÔNG TY TNHH XÂY DỰNG VÀ THƯƠNG MẠI QUỐC TẾ | Xây Nhà Là Xây Tổ Ấm</title>
+    <meta name="description" content="INVI - Thiết kế thi công trọn gói nhà phố, biệt thự tại Đà Nẵng - Quảng Nam. Minh bạch chi phí, đúng tiến độ, bảo hành 5 năm kết cấu.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        inviYellow: '#FFDF00',
+                        inviNavy: '#0A224F',
+                        inviDark: '#111111',
+                    },
+                    fontFamily: {
+                        sans: ['Be Vietnam Pro', 'system-ui', 'sans-serif']
+                    },
+                    boxShadow: {
+                        'soft': '0 10px 40px -10px rgba(10,34,79,0.15)',
+                        'yellow': '0 8px 24px -8px rgba(255,223,0,0.5)'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Be Vietnam Pro', sans-serif; -webkit-font-smoothing: antialiased; }
+        .glass { backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+        .reveal { opacity: 0; transform: translateY(24px); transition: all 0.8s cubic-bezier(0.16,1,0.3,1); }
+        .reveal.is-visible { opacity: 1; transform: translateY(0); }
+        .hero-grid { background-image: radial-gradient(rgba(255,255,255,0.08) 1px, transparent 1px); background-size: 24px 24px; }
+    </style>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "@id": "https://invi.vn",
+      "name": "CÔNG TY TNHH XÂY DỰNG VÀ THƯƠNG MẠI QUỐC TẾ INVI",
+      "alternateName": "INVI Construction",
+      "description": "Thiết kế - Thi công trọn gói nhà phố, biệt thự tại Đà Nẵng - Quảng Nam",
+      "url": "https://invi.vn",
+      "telephone": "+84905655655",
+      "email": "contact@invi.vn",
+      "founder": "LƯU ĐỨC THỊNH",
+      "taxID": "0401842606",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "234 Trường Chinh, Phường An Khê",
+        "addressLocality": "Đà Nẵng",
+        "addressRegion": "Đà Nẵng",
+        "addressCountry": "VN"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "16.0605",
+        "longitude": "108.1861"
+      },
+      "areaServed": ["Đà Nẵng", "Quảng Nam"],
+      "priceRange": "$$",
+      "openingHours": "Mo-Sa 07:30-17:30"
+    }
+    </script>
+</head>
+<body class="bg-slate-50 text-inviDark antialiased pt-[78px]">
+
+    <!-- Header -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-white/85 glass border-b border-slate-200/60">
+        <div class="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-[78px]">
+                <a href="/" class="flex items-center">
+                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAABTGlDQ1BJQ0MgUHJvZmlsZQAAeJxjYGA8kZOcW8wkwMCQm1dSFOTupBARGaXA/oiBmUGEgZOBj0E2Mbm4wDfYLYQBCIoTy4uTS4pyGFDAt2sMjCD6sm5GYl7K3IkMtg4NG2wdSnQa5y1V6mPADzhTUouTgfQHIJZJLigqYWBg5AGyecpLCkBsCSBbpAjoKCBbB8ROh7AdQOwkCDsErCYkyBnIzgCyE9KR2ElIbKhdIMBaCvQsskNKUitKQLSzswEDKAwgop9DwH5jFDuJEMtfwMBg8YmBgbkfIZY0jYFheycDg8QthJgKUB1/KwPDtiPJpUVlUGu0gLiG4QfjHKZS5maWk2x+HEJcEjxJfF8Ez4t8k8iS0VNwVlmjmaVXZ/zacrP9NbdwX7OQshjxFNmcttKwut4OnUlmc1Yv79l0e9/MU8evpz4p//jz/38A9Ylkoq8RzkUAAAPjSURBVHic7ZdNaFxVFMd/576X+Z4kkzZfTSohhlgR3IhuupDSgi3RaGoqibRg7MJCyUJLNkWpiFgXoosupCDY4qK6cNNalIoVFaNda60pGFehWNskTeYrM+/d4+JNvt8kxM1scuAxcLn3nN+583//e5/orKuoUpMQwQUL1AgAwdSo8lJsA2wD1BzADRu0FkRAFQSQ/4mpNnjBF3OZkDzrARRMUsGXoLBVWJCAZEvVQWKKGAEL4ijk1+dZxWQtkFBujCfpG+hg+Gg7k5NRNKrYLXiVVdCoMjkZZfhoO30DHfz6cxISGtRYEaKzRtGKGxvwrLD/2U7++NOhVBIO9xe48OkdbFZCtzAUwIJJKyOvtPPl5TjRiPLoHo/vrkzhOhrsiAAS4oSq4PvBryqUy4Lny9JxsbYD3w+etQCeJ3ieVPIIviehR86SBkTA+hBJWs6+Pc2H5xqIx5V33pzGjQc6UAWTUGxOME6wzmkMOtKsBF0puDGFOJw5PY1vm8jnhddHHxBJ2WDtiraX/oLlLQCSyjdX6mlt8ejuKvHV1yn6++ZJN1puT8TofbyAzguqwtVvU6QSln37cmgpEN5fEzHGb8Q4MpDl1u0I/9x1OfjcHOTWiFAEdNaozsiqx58V7e3p0pGXW/X65ZRCr35/Na2nRlu0Pv2wXjyfUS2h6qEnXm3TeLxH//4tql4WtTnRgwc6tbOjW3PTjh55YZfu6e1Sf00NnRHVWaOhsjIGGuotyZTi1kFba5nRsSY+u5TiqSdKHD+5g1NvtFIqGk6PTROLKh9/0oCThF9+SnD9xxhvjc2QyPhE6pRMg60q4FAjWhTSoiEVCoJXFi6cv8eBZ3K8924T739Uz9SUw+df3GHoxRwXLyW5O9PGzd8j9HR7DD6fXVK7b6tV2cSKBTCiFIqGcx/c59DhOaRoOXP2X14byfLDeAxvznDy+ANEhGvXYtyaqOPYUJam3WXwKq/bBlEVQGTZQl0XdjR62AXwPcEqZDIeibiSLwiPPVlk/9NFfF94aLfPsZfm0XzQwWKeLQOUy+B5AcDCglAqB6+PCBipjJUqfm+UEyNz3Lvv0H8oT8cjC3gFExibF+TaMkBLs6WxQYlElF3tPpGILl8dFdJppXmnxXVBcrB3b56hwQLDg/NouXKAKWQaLc07q4tgvQ9UIpc3OA7UuUq+YEgkLI5TgRAoFg2lspBO+hVbBbWCmBWgAoWCwSok4yEQItUBcBRUgmRGwcrqy7MBJDg1N4yN5gXX8vBQTxbnoJ6sE5L6QYsrxyubs+m8lVEVYOWCsMWhY5vkCYuaX8m2AbYB3IChdl/H/wHSQdT2Ch2RawAAAABJRU5ErkJggg==" alt="INVI Construction" class="h-10 w-auto">
+                </a>
+                <nav class="hidden md:flex items-center gap-8 font-medium text-[15px] text-slate-600">
+                    <a href="/" class="hover:text-inviNavy transition-colors">Trang chủ</a>
+                    <a href="/#dich-vu" class="hover:text-inviNavy transition-colors">Dịch vụ</a>
+                    <a href="/#du-an" class="hover:text-inviNavy transition-colors">Dự án</a>
+                    <a href="/bao-gia/" class="hover:text-inviNavy transition-colors">Báo giá</a>
+                    <a href="/phong-thuy/" class="hover:text-inviNavy transition-colors">Phong Thủy</a>
+                    <a href="/#lien-he" class="hover:text-inviNavy transition-colors">Liên hệ</a>
+                </nav>
+                <div class="flex items-center gap-4">
+                    <a href="tel:0905655655" class="bg-inviNavy hover:bg-slate-800 text-white font-semibold text-sm px-5 py-2.5 rounded-full shadow-soft transition-all">
+                        Hotline: 0905.655.655
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="trang-chu" class="relative bg-inviNavy text-white py-20 lg:py-32 overflow-hidden hero-grid">
+        <div class="absolute inset-0 bg-gradient-to-r from-inviNavy via-inviNavy/90 to-transparent z-10"></div>
+        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2070" alt="Kiến trúc INVI" class="absolute inset-0 w-full h-full object-cover object-center opacity-20">
+        
+        <div class="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
+            <div class="max-w-2xl">
+                <span class="bg-inviYellow/10 text-inviYellow text-xs font-bold uppercase tracking-widest px-3 py-1.5 rounded-full border border-inviYellow/20 inline-block mb-6">Xây Nhà Là Xây Tổ Ấm</span>
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight mb-6">
+                    Thiết Kế & Thi Công Trọn Gói Tại <span class="text-inviYellow">Đà Nẵng</span>
+                </h1>
+                <p class="text-slate-300 text-lg sm:text-xl mb-8 font-light leading-relaxed">
+                    INVI Construction mang đến giải pháp kiến trúc đột phá, minh bạch chi phí, cam kết tiến độ và chế độ bảo hành kết cấu lên tới 5 năm.
+                </p>
+                <div class="flex flex-wrap gap-4">
+                    <a href="/bao-gia/" class="bg-inviYellow hover:bg-yellow-400 text-inviNavy font-bold px-8 py-4 rounded-xl shadow-yellow transition-all">Nhận Báo Giá Ngay</a>
+                    <a href="/#du-an" class="border border-white/20 hover:bg-white/10 text-white font-semibold px-8 py-4 rounded-xl transition-all">Xem Dự Án Thực Tế</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Số liệu thống kê -->
+    <section class="bg-white py-12 border-b border-slate-100">
+        <div class="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                <div><p class="text-4xl font-black text-inviNavy mb-1">5+</p><p class="text-sm font-medium text-slate-500 uppercase tracking-wider">Năm Kinh Nghiệm</p></div>
+                <div><p class="text-4xl font-black text-inviNavy mb-1">150+</p><p class="text-sm font-medium text-slate-500 uppercase tracking-wider">Công Trình Hoàn Thành</p></div>
+                <div><p class="text-4xl font-black text-inviNavy mb-1">100%</p><p class="text-sm font-medium text-slate-500 uppercase tracking-wider">Đúng Tiến Độ</p></div>
+                <div><p class="text-4xl font-black text-inviNavy mb-1">5 Năm</p><p class="text-sm font-medium text-slate-500 uppercase tracking-wider">Bảo Hành Kết Cấu</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dịch vụ chính -->
+    <section id="dich-vu" class="py-20 lg:py-28">
+        <div class="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <h2 class="text-3xl font-extrabold text-inviNavy sm:text-4xl tracking-tight">Dịch Vụ Toàn Diện Của INVI</h2>
+                <div class="w-16 h-1 bg-inviYellow mx-auto mt-4 rounded-full"></div>
+                <p class="mt-4 text-slate-500 text-lg">Chúng tôi lo trọn gói từ khâu xin phép, thiết kế đến bàn giao chìa khóa trao tay.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-2xl shadow-soft border border-slate-100/80 hover:border-inviNavy/20 transition-all group">
+                    <div class="w-12 h-12 bg-inviNavy/5 text-inviNavy flex items-center justify-center rounded-xl font-bold text-lg mb-6 group-hover:bg-inviNavy group-hover:text-white transition-all">01</div>
+                    <h3 class="text-xl font-bold text-inviNavy mb-3">Thiết Kế Kiến Trúc & Nội Thất</h3>
+                    <p class="text-slate-500 leading-relaxed text-[15px]">Tối ưu hóa công năng sử dụng, phong thủy chuẩn xác, dựng phối cảnh 3D trực quan sinh động trước khi xây dựng.</p>
+                </div>
+                <div class="bg-white p-8 rounded-2xl shadow-soft border border-slate-100/80 hover:border-inviNavy/20 transition-all group">
+                    <div class="w-12 h-12 bg-inviNavy/5 text-inviNavy flex items-center justify-center rounded-xl font-bold text-lg mb-6 group-hover:bg-inviNavy group-hover:text-white transition-all">02</div>
+                    <h3 class="text-xl font-bold text-inviNavy mb-3">Thi Công Trọn Gói (Chìa Khóa Trao Tay)</h3>
+                    <p class="text-slate-500 leading-relaxed text-[15px]">Quản lý toàn bộ vật tư, kỹ sư giám sát trực tiếp tại công trình 24/7, cam kết không phát sinh bất kỳ chi phí nào.</p>
+                </div>
+                <div class="bg-white p-8 rounded-2xl shadow-soft border border-slate-100/80 hover:border-inviNavy/20 transition-all group">
+                    <div class="w-12 h-12 bg-inviNavy/5 text-inviNavy flex items-center justify-center rounded-xl font-bold text-lg mb-6 group-hover:bg-inviNavy group-hover:text-white transition-all">03</div>
+                    <h3 class="text-xl font-bold text-inviNavy mb-3">Xây Dựng Phần Thô & Nhân Công</h3>
+                    <p class="text-slate-500 leading-relaxed text-[15px]">Thi công nền móng vững chắc, đổ bê tông cốt thép tiêu chuẩn chất lượng cao, tạo khung sườn bền vững.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dự án tiêu biểu -->
+    <section id="du-an" class="py-20 lg:py-28 bg-slate-100">
+        <div class="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+                <div>
+                    <h2 class="text-3xl font-extrabold text-inviNavy sm:text-4xl tracking-tight">Dự Án Đã Thực Hiện</h2>
+                    <div class="w-16 h-1 bg-inviYellow mt-4 rounded-full"></div>
+                </div>
+                <p class="text-slate-500 max-w-md mt-4 md:mt-0">Hình ảnh thực tế các công trình nhà phố, biệt thự hiện đại vừa được INVI bàn giao tại Đà Nẵng.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white rounded-2xl overflow-hidden shadow-soft group">
+                    <div class="relative overflow-hidden h-64 bg-slate-200">
+                        <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=2053" alt="Biệt thự Cẩm Lệ" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="p-6"><span class="text-xs font-bold text-slate-400 uppercase tracking-widest block mb-1">Biệt thự phố</span><h3 class="text-lg font-bold text-inviNavy mb-2">INVI Villa - Cẩm Lệ, Đà Nẵng</h3><p class="text-sm text-slate-500">Diện tích: 320m² sàn | Phong cách hiện đại, tối giản.</p></div>
+                </div>
+                <div class="bg-white rounded-2xl overflow-hidden shadow-soft group">
+                    <div class="relative overflow-hidden h-64 bg-slate-200">
+                        <img src="https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?q=80&w=2084" alt="Nhà phố Liên Chiểu" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="p-6"><span class="text-xs font-bold text-slate-400 uppercase tracking-widest block mb-1">Nhà phố hiện đại</span><h3 class="text-lg font-bold text-inviNavy mb-2">Townhouse 3 Tầng - Liên Chiểu</h3><p class="text-sm text-slate-500">Diện tích: 210m² sàn | Công năng 4 phòng ngủ.</p></div>
+                </div>
+                <div class="bg-white rounded-2xl overflow-hidden shadow-soft group">
+                    <div class="relative overflow-hidden h-64 bg-slate-200">
+                        <img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?q=80&w=2070" alt="Nhà ống Ngũ Hành Sơn" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="p-6"><span class="text-xs font-bold text-slate-400 uppercase tracking-widest block mb-1">Nhà ống</span><h3 class="text-lg font-bold text-inviNavy mb-2">Minimalist House - Ngũ Hành Sơn</h3><p class="text-sm text-slate-500">Diện tích: 180m² sàn | Thiết kế giếng trời lấy sáng.</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bảng giá -->
+    <section id="bao-gia" class="py-20 lg:py-28 bg-white">
+        <div class="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <h2 class="text-3xl font-extrabold text-inviNavy sm:text-4xl tracking-tight">Báo Giá Tham Khảo Công Khai</h2>
+                <div class="w-16 h-1 bg-inviYellow mx-auto mt-4 rounded-full"></div>
+                <p class="mt-4 text-slate-500 text-lg">Cam kết sử dụng đúng chủng loại vật tư, không phát sinh sau ký hợp đồng.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
+                <div class="border border-slate-200 rounded-2xl p-8 flex flex-col justify-between">
+                    <div><h3 class="text-lg font-bold text-slate-700 mb-2">Thi Công Phần Thô</h3><div class="text-3xl font-black text-inviNavy mb-6">3.6 - 3.9 Tr <span class="text-sm font-normal text-slate-400">/ m²</span></div><ul class="space-y-3 text-sm text-slate-500 mb-8"><li>✓ Định vị móng, đào móng</li><li>✓ Đổ bê tông cốt thép</li><li>✓ Xây tường, tô trát</li><li>✓ Đi ống điện nước âm</li></ul></div><a href="/bao-gia/" class="w-full text-center border border-inviNavy hover:bg-inviNavy hover:text-white font-semibold py-3 rounded-xl transition-all block">Nhận Dự Toán</a>
+                </div>
+                <div class="border-2 border-inviNavy rounded-2xl p-8 flex flex-col justify-between relative shadow-soft bg-slate-900 text-white">
+                    <span class="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-inviYellow text-inviNavy text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Phổ Biến Nhất</span>
+                    <div><h3 class="text-lg font-bold text-inviYellow mb-2">Trọn Gói Chìa Khóa Trao Tay</h3><div class="text-3xl font-black mb-6">5.8 - 6.8 Tr <span class="text-sm font-normal text-slate-400">/ m²</span></div><ul class="space-y-3 text-sm text-slate-300 mb-8"><li><span class="text-inviYellow">✓</span> Bao gồm toàn bộ Phần Thô</li><li><span class="text-inviYellow">✓</span> Gạch ốp lát, sơn nước cao cấp</li><li><span class="text-inviYellow">✓</span> Thiết bị vệ sinh, đèn chiếu sáng</li><li><span class="text-inviYellow">✓</span> Miễn phí 100% bản vẽ thiết kế</li></ul></div><a href="/bao-gia/" class="w-full text-center bg-inviYellow text-inviNavy font-bold py-3 rounded-xl hover:bg-yellow-400 transition-all block">Đăng Ký Tư Vấn</a>
+                </div>
+                <div class="border border-slate-200 rounded-2xl p-8 flex flex-col justify-between">
+                    <div><h3 class="text-lg font-bold text-slate-700 mb-2">Thiết Kế Bản Vẽ</h3><div class="text-3xl font-black text-inviNavy mb-6">120K - 180K <span class="text-sm font-normal text-slate-400">/ m²</span></div><ul class="space-y-3 text-sm text-slate-500 mb-8"><li>✓ Hồ sơ kiến trúc kỹ thuật</li><li>✓ Phối cảnh 3D Nội/ Ngoại thất</li><li>✓ Bản vẽ kết cấu</li><li>✓ Hồ sơ M&E (Điện nước)</li></ul></div><a href="#lien-he" class="w-full text-center border border-inviNavy hover:bg-inviNavy hover:text-white font-semibold py-3 rounded-xl transition-all block">Xem Mẫu</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Liên hệ -->
+    <section id="lien-he" class="py-20 lg:py-28 bg-slate-900 text-white">
+        <div class="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+                <div><h2 class="text-3xl font-extrabold sm:text-4xl tracking-tight text-white">Liên Hệ Đặt Lịch Khảo Sát</h2><div class="w-16 h-1 bg-inviYellow mt-4 mb-8 rounded-full"></div><p class="text-slate-400 mb-8 leading-relaxed">Kỹ sư trưởng INVI sẵn sàng tới tận khu đất tại Đà Nẵng - Quảng Nam để đo đạc, kiểm tra địa chất và tư vấn miễn phí.</p><div class="space-y-4"><div class="flex items-start gap-4"><span class="text-inviYellow font-bold">Địa chỉ:</span><span class="text-slate-300">234 Trường Chinh, An Khê, Thanh Khê, Đà Nẵng</span></div><div class="flex items-start gap-4"><span class="text-inviYellow font-bold">Hotline:</span><a href="tel:0905655655" class="text-slate-300 hover:text-white">0905.655.655</a></div><div class="flex items-start gap-4"><span class="text-inviYellow font-bold">Email:</span><span class="text-slate-300">contact@invi.vn</span></div><div class="flex items-start gap-4"><span class="text-inviYellow font-bold">MST:</span><span class="text-slate-300">0401842606</span></div></div></div>
+                <div class="bg-white text-inviDark p-8 rounded-2xl shadow-soft"><h3 class="text-xl font-bold text-inviNavy mb-6">Yêu Cầu Gọi Lại Tư Vấn</h3><form class="space-y-4" onsubmit="alert('Cảm ơn bạn! INVI sẽ liên hệ trong 15 phút.'); return false;"><div><label class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-2">Họ và tên</label><input type="text" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-inviNavy" placeholder="Nguyễn Văn A"></div><div><label class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-2">Số điện thoại</label><input type="tel" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-inviNavy" placeholder="0905xxxxxx"></div><div><label class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-2">Dịch vụ</label><select class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-inviNavy"><option>Thi công nhà phố trọn gói</option><option>Thi công biệt thự</option><option>Thiết kế kiến trúc</option><option>Xây phần thô</option></select></div><button type="submit" class="w-full bg-inviNavy hover:bg-slate-800 text-white font-bold py-4 rounded-xl transition-all shadow-soft mt-2">Gửi Yêu Cầu</button></form></div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-slate-950 text-slate-500 text-sm py-8 border-t border-slate-800/50"><div class="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 text-center sm:flex sm:justify-between"><p>© 2026 CÔNG TY TNHH XÂY DỰNG VÀ THƯƠNG MẠI QUỐC TẾ INVI.</p><p class="mt-2 sm:mt-0">Đại diện: LƯU ĐỨC THỊNH</p></div></footer>
+</body>
+</html>

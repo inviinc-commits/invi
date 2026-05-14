@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hệ Thống Phân Cung Điểm Thần | INVI Construction</title>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: { inviYellow: '#FFDF00', inviNavy: '#0A224F', inviGold: '#FFD700', inviDark: '#111111' },
+                    fontFamily: { sans: ['Be Vietnam Pro', 'sans-serif'] },
+                    boxShadow: { 'soft': '0 10px 40px -10px rgba(10,34,79,0.15)' }
+                }
+            }
+        }
+    </script>
+    <style>
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: rgba(255,255,255,0.02); border-radius: 10px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: rgba(255,223,0,0.3); border-radius: 10px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: rgba(255,223,0,0.6); }
+    .glass { backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+</style>
+</head>
+<body class="bg-slate-100 text-inviDark min-h-screen p-4 md:p-8 pt-[94px] md:pt-[94px] font-sans">
+<header class="fixed top-0 left-0 right-0 z-50 bg-white/85 glass border-b border-slate-200/60">
+        <div class="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-[78px]">
+                <a href="/" class="flex items-center">
+                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAABTGlDQ1BJQ0MgUHJvZmlsZQAAeJxjYGA8kZOcW8wkwMCQm1dSFOTupBARGaXA/oiBmUGEgZOBj0E2Mbm4wDfYLYQBCIoTy4uTS4pyGFDAt2sMjCD6sm5GYl7K3IkMtg4NG2wdSnQa5y1V6mPADzhTUouTgfQHIJZJLigqYWBg5AGyecpLCkBsCSBbpAjoKCBbB8ROh7AdQOwkCDsErCYkyBnIzgCyE9KR2ElIbKhdIMBaCvQsskNKUitKQLSzswEDKAwgop9DwH5jFDuJEMtfwMBg8YmBgbkfIZY0jYFheycDg8QthJgKUB1/KwPDtiPJpUVlUGu0gLiG4QfjHKZS5maWk2x+HEJcEjxJfF8Ez4t8k8iS0VNwVlmjmaVXZ/zacrP9NbdwX7OQshjxFNmcttKwut4OnUlmc1Yv79l0e9/MU8evpz4p//jz/38A9Ylkoq8RzkUAAAPjSURBVHic7ZdNaFxVFMd/576X+Z4kkzZfTSohhlgR3IhuupDSgi3RaGoqibRg7MJCyUJLNkWpiFgXoosupCDY4qK6cNNalIoVFaNda60pGFehWNskTeYrM+/d4+JNvt8kxM1scuAxcLn3nN+583//e5/orKuoUpMQwQUL1AgAwdSo8lJsA2wD1BzADRu0FkRAFQSQ/4mpNnjBF3OZkDzrARRMUsGXoLBVWJCAZEvVQWKKGAEL4ijk1+dZxWQtkFBujCfpG+hg+Gg7k5NRNKrYLXiVVdCoMjkZZfhoO30DHfz6cxISGtRYEaKzRtGKGxvwrLD/2U7++NOhVBIO9xe48OkdbFZCtzAUwIJJKyOvtPPl5TjRiPLoHo/vrkzhOhrsiAAS4oSq4PvBryqUy4Lny9JxsbYD3w+etQCeJ3ieVPIIviehR86SBkTA+hBJWs6+Pc2H5xqIx5V33pzGjQc6UAWTUGxOME6wzmkMOtKsBF0puDGFOJw5PY1vm8jnhddHHxBJ2WDtiraX/oLlLQCSyjdX6mlt8ejuKvHV1yn6++ZJN1puT8TofbyAzguqwtVvU6QSln37cmgpEN5fEzHGb8Q4MpDl1u0I/9x1OfjcHOTWiFAEdNaozsiqx58V7e3p0pGXW/X65ZRCr35/Na2nRlu0Pv2wXjyfUS2h6qEnXm3TeLxH//4tql4WtTnRgwc6tbOjW3PTjh55YZfu6e1Sf00NnRHVWaOhsjIGGuotyZTi1kFba5nRsSY+u5TiqSdKHD+5g1NvtFIqGk6PTROLKh9/0oCThF9+SnD9xxhvjc2QyPhE6pRMg60q4FAjWhTSoiEVCoJXFi6cv8eBZ3K8924T739Uz9SUw+df3GHoxRwXLyW5O9PGzd8j9HR7DD6fXVK7b6tV2cSKBTCiFIqGcx/c59DhOaRoOXP2X14byfLDeAxvznDy+ANEhGvXYtyaqOPYUJam3WXwKq/bBlEVQGTZQl0XdjR62AXwPcEqZDIeibiSLwiPPVlk/9NFfF94aLfPsZfm0XzQwWKeLQOUy+B5AcDCglAqB6+PCBipjJUqfm+UEyNz3Lvv0H8oT8cjC3gFExibF+TaMkBLs6WxQYlElF3tPpGILl8dFdJppXmnxXVBcrB3b56hwQLDg/NouXKAKWQaLc07q4tgvQ9UIpc3OA7UuUq+YEgkLI5TgRAoFg2lspBO+hVbBbWCmBWgAoWCwSok4yEQItUBcBRUgmRGwcrqy7MBJDg1N4yN5gXX8vBQTxbnoJ6sE5L6QYsrxyubs+m8lVEVYOWCsMWhY5vkCYuaX8m2AbYB3IChdl/H/wHSQdT2Ch2RawAAAABJRU5ErkJggg==" alt="INVI Construction" class="h-10 w-auto">
+                </a>
+                <nav class="hidden md:flex items-center gap-8 font-medium text-[15px] text-slate-600">
+                    <a href="/" class="hover:text-inviNavy transition-colors">Trang chủ</a>
+                    <a href="/#dich-vu" class="hover:text-inviNavy transition-colors">Dịch vụ</a>
+                    <a href="/#du-an" class="hover:text-inviNavy transition-colors">Dự án</a>
+                    <a href="/bao-gia/" class="hover:text-inviNavy transition-colors">Báo giá</a>
+                    <a href="/phong-thuy/" class="hover:text-inviNavy transition-colors">Phong Thủy</a>
+                    <a href="/#lien-he" class="hover:text-inviNavy transition-colors">Liên hệ</a>
+                </nav>
+                <div class="flex items-center gap-4">
+                    <a href="tel:0905655655" class="bg-inviNavy hover:bg-slate-800 text-white font-semibold text-sm px-5 py-2.5 rounded-full shadow-soft transition-all">
+                        Hotline: 0905.655.655
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+<div class="h-[78px]"></div>
+
+    <div class="max-w-6xl mx-auto bg-white rounded-2xl shadow-2xl overflow-hidden border border-slate-200">
+        <div class="bg-inviNavy text-white p-6 text-center border-b-4 border-inviYellow">
+            <h1 class="text-2xl md:text-3xl font-black text-inviYellow uppercase tracking-tighter">Hệ Thống Phân Cung Điểm Thần 2026</h1>
+            <p class="text-sm opacity-80 mt-1 font-medium italic">Công cụ quy hoạch không gian kiến trúc chuyên sâu - INVI Construction</p>
+        </div>
+
+        <div class="p-6 border-b border-slate-100 bg-slate-50 grid grid-cols-1 md:grid-cols-3 gap-4 items-end">
+            <div>
+                <label class="block text-[11px] font-bold text-slate-500 uppercase mb-1 ml-1">Năm sinh (Dương)</label>
+                <input type="number" id="namSinh" placeholder="VD: 1985" class="w-full px-4 py-2.5 border border-slate-300 rounded-xl focus:ring-2 focus:ring-inviNavy outline-none font-bold text-inviNavy shadow-sm">
+            </div>
+            <div>
+                <label class="block text-[11px] font-bold text-slate-500 uppercase mb-1 ml-1">Giới tính</label>
+                <select id="gioiTinh" class="w-full px-4 py-2.5 border border-slate-300 rounded-xl focus:ring-2 focus:ring-inviNavy outline-none font-bold text-inviNavy shadow-sm">
+                    <option value="nam">Nam giới</option>
+                    <option value="nu">Nữ giới</option>
+                </select>
+            </div>
+            <button onclick="xemPhongThuy()" class="bg-inviNavy text-inviYellow px-8 py-2.5 rounded-xl font-black uppercase tracking-wider hover:bg-inviDark transition-all shadow-lg active:scale-95 border-2 border-inviNavy">
+                Phân Tích Cung Mệnh
+            </button>
+        </div>
+
+        <div id="ketQua" class="p-6 hidden transition-all duration-700 opacity-0">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+                <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200 text-center shadow-sm">
+                    <p class="text-[10px] text-slate-500 uppercase font-black mb-1">Năm Âm Lịch</p>
+                    <p id="kqCanChi" class="font-bold text-lg text-inviNavy">-</p>
+                </div>
+                <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200 text-center shadow-sm">
+                    <p class="text-[10px] text-slate-500 uppercase font-black mb-1">Mệnh Nạp Âm</p>
+                    <p id="kqMenh" class="font-bold text-lg text-inviNavy">-</p>
+                </div>
+                <div class="bg-inviYellow p-4 rounded-2xl border-2 border-inviYellow text-center transform scale-105 shadow-md">
+                    <p class="text-[10px] text-inviNavy uppercase font-black mb-1">Cung Phi Mệnh Chủ</p>
+                    <p id="kqCung" class="font-black text-2xl text-inviNavy">-</p>
+                </div>
+                <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200 text-center shadow-sm">
+                    <p class="text-[10px] text-slate-500 uppercase font-black mb-1">Ngũ Hành Cung</p>
+                    <p id="kqHanh" class="font-bold text-lg text-inviNavy">-</p>
+                </div>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-8">
+                <div class="space-y-6">
+                    <div class="bg-white p-6 rounded-2xl shadow-soft border border-slate-200">
+                        <h4 class="text-sm font-black text-inviNavy mb-4 uppercase tracking-wider flex items-center gap-2 border-b border-slate-100 pb-2">
+                            🎨 Chỉ Định Vật Liệu Kỹ Thuật (Spec)
+                        </h4>
+                        <div id="kqMauSac" class="grid grid-cols-1 md:grid-cols-2 gap-3"></div>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-2xl shadow-soft border border-slate-200">
+                        <h3 class="text-sm font-black uppercase text-inviNavy border-b border-slate-100 mb-4 pb-2">Bảng Phân Bố Công Năng Kỹ Thuật</h3>
+                        <div class="space-y-4">
+                            <div class="bg-green-50 rounded-xl p-4 border border-green-200">
+                                <h4 class="text-green-800 font-black text-xs mb-3 uppercase tracking-wider flex items-center gap-2">
+                                    <span class="bg-green-200 p-1 rounded text-green-800 leading-none">✓</span> Vùng Đặt Cửa Chính, Bếp, Ban Thờ
+                                </h4>
+                                <ul id="huongTot" class="text-[13px] space-y-2"></ul>
+                            </div>
+                            <div class="bg-red-50 rounded-xl p-4 border border-red-200">
+                                <h4 class="text-red-800 font-black text-xs mb-3 uppercase tracking-wider flex items-center gap-2">
+                                    <span class="bg-red-200 p-1 rounded text-red-800 leading-none">✗</span> Vùng Đặt WC, Bể Phốt, Kho
+                                </h4>
+                                <ul id="huongXau" class="text-[13px] space-y-2"></ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="space-y-6">
+                    <div class="bg-slate-900 p-6 rounded-2xl shadow-2xl border-2 border-slate-800 relative overflow-hidden">
+                        <div class="absolute inset-0 opacity-10" style="background-image: linear-gradient(#475569 1px, transparent 1px), linear-gradient(90deg, #475569 1px, transparent 1px); background-size: 20px 20px;"></div>
+                        
+                        <div class="relative flex justify-between items-center mb-6 z-10">
+                            <h3 class="text-inviYellow font-black uppercase tracking-tighter text-sm">La Bàn Kỹ Thuật (Overlay)</h3>
+                            <div class="flex items-center gap-2 bg-inviNavy p-1.5 rounded-lg border border-white/10 shadow-inner">
+                                <span class="text-[10px] font-bold text-slate-400 pl-2">TỌA ĐỘ:</span>
+                                <input type="number" id="degInput" value="0" min="0" max="360" class="w-16 bg-white/10 text-white text-sm font-bold text-center py-1 rounded outline-none focus:ring-1 focus:ring-inviYellow transition-all" oninput="rotateLaBan(this.value)">
+                                <span class="text-[12px] text-white pr-2 font-bold">°</span>
+                            </div>
+                        </div>
+
+                        <div class="relative flex justify-center py-4 overflow-hidden z-10">
+                            <div id="laBanXoay" class="relative w-72 h-72 md:w-80 md:h-80 transition-transform duration-700 ease-out">
+                                <div class="absolute top-[-15px] left-1/2 -translate-x-1/2 text-red-500 font-black z-30 text-[11px] bg-slate-900 px-2 rounded border border-red-500/30">BẮC (0°)</div>
+                                
+                                <svg viewBox="0 0 400 400" class="w-full h-full drop-shadow-[0_0_25px_rgba(255,223,0,0.1)]">
+                                    <g id="svg24Son"></g>
+                                    <circle cx="200" cy="200" r="198" fill="none" stroke="#64748b" stroke-width="0.5" />
+                                    <circle cx="200" cy="200" r="185" fill="none" stroke="#334155" stroke-width="1.5"/>
+                                    <g id="svgSectors"></g>
+                                    <circle cx="200" cy="200" r="40" fill="#0A224F" stroke="#FFDF00" stroke-width="2"/>
+                                    <circle cx="200" cy="200" r="34" fill="none" stroke="#FFDF00" stroke-width="0.5" stroke-dasharray="2 2"/>
+                                    <text x="200" y="204" fill="#FFDF00" font-size="11" font-weight="900" text-anchor="middle" letter-spacing="1">INVI</text>
+                                </svg>
+                            </div>
+                            
+                            <div class="absolute top-0 bottom-0 left-1/2 w-[1px] bg-red-500/70 -translate-x-1/2 pointer-events-none z-20 border-l border-dashed border-red-500 shadow-[0_0_5px_rgba(239,68,68,0.5)]"></div>
+                            <div class="absolute left-0 right-0 top-1/2 h-[1px] bg-slate-400/30 -translate-y-1/2 pointer-events-none z-20 border-t border-dashed border-slate-400"></div>
+                            <div class="absolute top-1/2 left-1/2 w-4 h-4 border-2 border-red-500 rounded-full -translate-x-1/2 -translate-y-1/2 z-20 pointer-events-none"></div>
+                        </div>
+
+                        <div class="mt-6 bg-white/5 p-4 rounded-xl border border-white/10 z-10 relative">
+                            <input type="range" id="sliderLaBan" min="0" max="360" value="0" class="w-full accent-inviYellow cursor-pointer h-2 bg-slate-700 rounded-lg appearance-none" oninput="rotateLaBan(this.value)">
+                            <p class="text-[11px] text-slate-400 italic mt-3 flex items-start gap-2 leading-relaxed">
+                                <span class="text-inviYellow text-sm">💡</span> 
+                                Overlay Kỹ Thuật: Căn chỉnh thanh trượt để đường trục đỏ khớp với hướng chính của khu đất trên file CAD. Cát/Hung sẽ tự động áp vào công năng.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="bg-slate-900 p-6 rounded-2xl shadow-xl border-2 border-slate-800">
+                        <div class="flex justify-between items-center mb-6">
+                            <h3 class="text-inviYellow font-black uppercase tracking-tighter text-sm">Cửu Cung Phi Tinh (Niên Vận 2026)</h3>
+                            <span class="px-2 py-1 bg-red-600/20 text-red-500 text-[10px] font-bold rounded border border-red-600/30">VẬN 9 - HỎA</span>
+                        </div>
+
+                        <div class="grid grid-cols-3 gap-2 bg-slate-800 p-2 rounded-xl shadow-inner border border-white/5" id="gridPhiTinh"></div>
+
+                        <div class="mt-4 p-3 bg-white/5 rounded-lg border border-white/5">
+                            <p class="text-[11px] text-slate-400 leading-relaxed italic">
+                                * <b class="text-red-500">Ngũ Hoàng (5 - Nam)</b> và <b class="text-orange-500">Nhị Hắc (2 - Tây Bắc)</b> là hai vị trí hung hiểm nhất năm 2026. Tránh động thổ hoặc bố trí các khu vực động (cửa, cầu thang) tại đây nếu không có biện pháp hóa giải.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="bg-slate-800 rounded-2xl p-6 text-white shadow-xl border border-slate-700">
+                        <h3 class="font-black text-inviYellow uppercase mb-5 flex items-center gap-2 text-sm">
+                            📅 Kế Hoạch Khởi Công & Động Thổ
+                        </h3>
+                        
+                        <div class="mb-5 bg-slate-900 p-4 rounded-xl border border-slate-600">
+                            <label class="block text-[11px] font-bold text-slate-400 uppercase mb-2">Chọn mốc thời gian dự kiến (Tra cứu 3 tháng):</label>
+                            <input type="date" id="ngayBatDau" class="w-full px-4 py-2.5 rounded-lg bg-slate-800 text-white font-bold outline-none border border-slate-500 focus:border-inviYellow focus:ring-1 focus:ring-inviYellow shadow-inner cursor-pointer">
+                        </div>
+
+                        <div class="border-t border-slate-700 pt-5 pb-2">
+                            <button onclick="timNgayTrong3Thang()" class="w-full bg-inviYellow text-inviNavy font-black py-3.5 rounded-xl hover:bg-white transition-all uppercase text-xs tracking-widest shadow-[0_5px_15px_rgba(255,223,0,0.15)] active:scale-95">
+                                🚀 Quét Ngày Đại Cát (Tự Động)
+                            </button>
+                        </div>
+                        
+                        <div id="goiYNgay" class="mt-4 space-y-2 max-h-[340px] overflow-y-auto pr-1 custom-scrollbar"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script>
+// Khởi tạo ngày hiện tại cho Input Date
+document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('ngayBatDau').valueAsDate = new Date();
+    renderPhiTinh2026(); 
+});
+
+
+// --- CORE ALGORITHM REBUILD (ASTRONOMICAL STABLE ENGINE) ---
+const PI = Math.PI;
+
+function INT(d){ return Math.floor(d); }
+
+function jdFromDate(dd, mm, yy){
+    let a = INT((14 - mm) / 12);
+    let y = yy + 4800 - a;
+    let m = mm + 12 * a - 3;
+
+    let jd = dd + INT((153 * m + 2) / 5)
+        + 365 * y
+        + INT(y / 4)
+        - INT(y / 100)
+        + INT(y / 400)
+        - 32045;
+
+    if (jd < 2299161) {
+        jd = dd + INT((153 * m + 2) / 5)
+            + 365 * y
+            + INT(y / 4)
+            - 32083;
+    }
+
+    return jd;
+}
+
+function jdToDate(jd){
+    let a, b, c;
+
+    if (jd > 2299160) {
+        a = jd + 32044;
+        b = INT((4 * a + 3) / 146097);
+        c = a - INT((b * 146097) / 4);
+    } else {
+        b = 0;
+        c = jd + 32082;
+    }
+
+    let d = INT((4 * c + 3) / 1461);
+    let e = c - INT((1461 * d) / 4);
+    let m = INT((5 * e + 2) / 153);
+
+    let day = e - INT((153 * m + 2) / 5) + 1;
+    let month = m + 3 - 12 * INT(m / 10);
+    let year = b * 100 + d - 4800 + INT(m / 10);
+
+    return [day, month, year];
+}
+
+function NewMoon(k){
+    let T = k / 1236.85;
+    let T2 = T * T;
+    let T3 = T2 * T;
+    let dr = PI / 180;
+
+    let Jd1 = 2415020.75933
+        + 29.53058868 * k
+        + 0.0001178 * T2
+        - 0.000000155 * T3;
+
+    Jd1 += 0.00033 * Math.sin((166.56 + 132.87 * T - 0.009173 * T2) * dr);
+
+    let M = 359.2242 + 29.10535608 * k - 0.0000333 * T2 - 0.00000347 * T3;
+    let Mpr = 306.0253 + 385.81691806 * k + 0.0107306 * T2 + 0.00001236 * T3;
+    let F = 21.2964 + 390.67050646 * k - 0.0016528 * T2 - 0.00000239 * T3;
+
+    let C1 =
+        (0.1734 - 0.000393 * T) * Math.sin(M * dr)
+        + 0.0021 * Math.sin(2 * dr * M)
+        - 0.4068 * Math.sin(Mpr * dr)
+        + 0.0161 * Math.sin(2 * dr * Mpr)
+        - 0.0004 * Math.sin(3 * dr * Mpr)
+        + 0.0104 * Math.sin(2 * dr * F)
+        - 0.0051 * Math.sin(dr * (M + Mpr))
+        - 0.0074 * Math.sin(dr * (M - Mpr))
+        + 0.0004 * Math.sin(dr * (2 * F + M))
+        - 0.0004 * Math.sin(dr * (2 * F - M))
+        - 0.0006 * Math.sin(dr * (2 * F + Mpr))
+        + 0.0010 * Math.sin(dr * (2 * F - Mpr))
+        + 0.0005 * Math.sin(dr * (2 * Mpr + M));
+
+    let deltaT;
+
+    if (T < -11) {
+        deltaT = 0.001 + 0.000839 * T + 0.0002261 * T2
+            - 0.00000845 * T3 - 0.000000081 * T * T3;
+    } else {
+        deltaT = -0.000278 + 0.000265 * T + 0.000262 * T2;
+    }
+
+    return Jd1 + C1 - deltaT;
+}
+
+function getNewMoonDay(k, timeZone){
+    return INT(NewMoon(k) + 0.5 + timeZone / 24);
+}
+
+function SunLongitude(jdn){
+    let T = (jdn - 2451545.0) / 36525;
+    let T2 = T * T;
+    let dr = PI / 180;
+
+    let M = 357.52910 + 35999.05030 * T
+        - 0.0001559 * T2
+        - 0.00000048 * T * T2;
+
+    let L0 = 280.46645 + 36000.76983 * T + 0.0003032 * T2;
+
+    let DL =
+        (1.914600 - 0.004817 * T - 0.000014 * T2)
+        * Math.sin(dr * M);
+
+    DL +=
+        (0.019993 - 0.000101 * T)
+        * Math.sin(2 * dr * M)
+        + 0.000290 * Math.sin(3 * dr * M);
+
+    let L = L0 + DL;
+
+    L *= dr;
+    L -= PI * 2 * INT(L / (PI * 2));
+
+    return L;
+}
+
+function getSunLongitude(dayNumber, timeZone){
+    return INT(
+        SunLongitude(dayNumber - 0.5 - timeZone / 24)
+        / PI * 6
+    );
+}
+
+function getLunarMonth11(yy, timeZone){
+    let off = jdFromDate(31, 12, yy) - 2415021;
+    let k = INT(off / 29.530588853);
+
+    let nm = getNewMoonDay(k, timeZone);
+    let sunLong = getSunLongitude(nm, timeZone);
+
+    if (sunLong >= 9) {
+        nm = getNewMoonDay(k - 1, timeZone);
+    }
+
+    return nm;
+}
+
+function getLeapMonthOffset(a11, timeZone){
+    let k = INT((a11 - 2415021.076998695) / 29.530588853 + 0.5);
+
+    let last, arc;
+    let i = 1;
+
+    arc = getSunLongitude(getNewMoonDay(k + i, timeZone), timeZone);
+
+    do {
+        last = arc;
+        i++;
+        arc = getSunLongitude(getNewMoonDay(k + i, timeZone), timeZone);
+    } while (arc !== last && i < 14);
+
+    return i - 1;
+}
+
+function convertSolar2Lunar(dd, mm, yy, timeZone = 7){
+
+    let dayNumber = jdFromDate(dd, mm, yy);
+
+    let k = INT(
+        (dayNumber - 2415021.076998695)
+        / 29.530588853
+    );
+
+    let monthStart = getNewMoonDay(k + 1, timeZone);
+
+    if (monthStart > dayNumber) {
+        monthStart = getNewMoonDay(k, timeZone);
+    }
+
+    let a11 = getLunarMonth11(yy, timeZone);
+    let b11 = a11;
+
+    let lunarYear;
+
+    if (a11 >= monthStart) {
+        lunarYear = yy;
+        a11 = getLunarMonth11(yy - 1, timeZone);
+    } else {
+        lunarYear = yy + 1;
+        b11 = getLunarMonth11(yy + 1, timeZone);
+    }
+
+    let lunarDay = dayNumber - monthStart + 1;
+    let diff = INT((monthStart - a11) / 29);
+
+    let lunarLeap = 0;
+    let lunarMonth = diff + 11;
+
+    if (b11 - a11 > 365) {
+
+        let leapMonthDiff = getLeapMonthOffset(a11, timeZone);
+
+        if (diff >= leapMonthDiff) {
+            lunarMonth = diff + 10;
+
+            if (diff === leapMonthDiff) {
+                lunarLeap = 1;
+            }
+        }
+    }
+
+    if (lunarMonth > 12) {
+        lunarMonth -= 12;
+    }
+
+    if (lunarMonth >= 11 && diff < 4) {
+        lunarYear -= 1;
+    }
+
+    return [lunarDay, lunarMonth, lunarYear, lunarLeap];
+}
+
+// --- BẢNG BÁT TRẠCH MAP (DYNAMIC LABELING) ---
+
+const FULL_BAT_TRACH_MAP = {
+    'Khảm': { 'KHẢM': 'Phục Vị', 'CẤN': 'Ngũ Quỷ', 'CHẤN': 'Thiên Y', 'TỐN': 'Sinh Khí', 'LY': 'Diên Niên', 'KHÔN': 'Tuyệt Mệnh', 'ĐOÀI': 'Lục Sát', 'CÀN': 'Họa Hại' },
+    'Ly': { 'KHẢM': 'Diên Niên', 'CẤN': 'Họa Hại', 'CHẤN': 'Sinh Khí', 'TỐN': 'Thiên Y', 'LY': 'Phục Vị', 'KHÔN': 'Lục Sát', 'ĐOÀI': 'Ngũ Quỷ', 'CÀN': 'Tuyệt Mệnh' },
+    'Chấn': { 'KHẢM': 'Thiên Y', 'CẤN': 'Lục Sát', 'CHẤN': 'Phục Vị', 'TỐN': 'Diên Niên', 'LY': 'Sinh Khí', 'KHÔN': 'Họa Hại', 'ĐOÀI': 'Tuyệt Mệnh', 'CÀN': 'Ngũ Quỷ' },
+    'Tốn': { 'KHẢM': 'Sinh Khí', 'CẤN': 'Tuyệt Mệnh', 'CHẤN': 'Diên Niên', 'TỐN': 'Phục Vị', 'LY': 'Thiên Y', 'KHÔN': 'Ngũ Quỷ', 'ĐOÀI': 'Lục Sát', 'CÀN': 'Họa Hại' },
+    'Càn': { 'KHẢM': 'Lục Sát', 'CẤN': 'Thiên Y', 'CHẤN': 'Ngũ Quỷ', 'TỐN': 'Họa Hại', 'LY': 'Tuyệt Mệnh', 'KHÔN': 'Diên Niên', 'ĐOÀI': 'Sinh Khí', 'CÀN': 'Phục Vị' },
+    'Đoài': { 'KHẢM': 'Họa Hại', 'CẤN': 'Diên Niên', 'CHẤN': 'Tuyệt Mệnh', 'TỐN': 'Lục Sát', 'LY': 'Ngũ Quỷ', 'KHÔN': 'Thiên Y', 'ĐOÀI': 'Phục Vị', 'CÀN': 'Sinh Khí' },
+    'Cấn': { 'KHẢM': 'Ngũ Quỷ', 'CẤN': 'Phục Vị', 'CHẤN': 'Lục Sát', 'TỐN': 'Tuyệt Mệnh', 'LY': 'Họa Hại', 'KHÔN': 'Sinh Khí', 'ĐOÀI': 'Diên Niên', 'CÀN': 'Thiên Y' },
+    'Khôn': { 'KHẢM': 'Tuyệt Mệnh', 'CẤN': 'Sinh Khí', 'CHẤN': 'Họa Hại', 'TỐN': 'Ngũ Quỷ', 'LY': 'Lục Sát', 'KHÔN': 'Phục Vị', 'ĐOÀI': 'Thiên Y', 'CÀN': 'Diên Niên' }
+};
+
+// --- DATA CƠ BẢN ---
+const CAN = ['Giáp','Ất','Bính','Đinh','Mậu','Kỷ','Canh','Tân','Nhâm','Quý'];
+const CHI = ['Tý','Sửu','Dần','Mão','Thìn','Tỵ','Ngọ','Mùi','Thân','Dậu','Tuất','Hợi'];
+const NAP_AM = ['Hải Trung Kim','Hải Trung Kim','Lư Trung Hỏa','Lư Trung Hỏa','Đại Lâm Mộc','Đại Lâm Mộc','Lộ Bàng Thổ','Lộ Bàng Thổ','Kiếm Phong Kim','Kiếm Phong Kim','Sơn Đầu Hỏa','Sơn Đầu Hỏa','Giản Hạ Thủy','Giản Hạ Thủy','Thành Đầu Thổ','Thành Đầu Thổ','Bạch Lạp Kim','Bạch Lạp Kim','Dương Liễu Mộc','Dương Liễu Mộc','Tuyền Trung Thủy','Tuyền Trung Thủy','Ốc Thượng Thổ','Ốc Thượng Thổ','Tích Lịch Hỏa','Tích Lịch Hỏa','Tùng Bách Mộc','Tùng Bách Mộc','Trường Lưu Thủy','Trường Lưu Thủy','Sa Trung Kim','Sa Trung Kim','Sơn Hạ Hỏa','Sơn Hạ Hỏa','Bình Địa Mộc','Bình Địa Mộc','Bích Thượng Thổ','Bích Thượng Thổ','Kim Bạch Kim','Kim Bạch Kim','Phú Đăng Hỏa','Phú Đăng Hỏa','Thiên Hà Thủy','Thiên Hà Thủy','Đại Trạch Thổ','Đại Trạch Thổ','Thoa Xuyến Kim','Thoa Xuyến Kim','Tang Đố Mộc','Tang Đố Mộc','Đại Khê Thủy','Đại Khê Thủy','Sa Trung Thổ','Sa Trung Thổ','Thiên Thượng Hỏa','Thiên Thượng Hỏa','Thạch Lựu Mộc','Thạch Lựu Mộc','Đại Hải Thủy','Đại Hải Thủy'];
+const CUNG_MAP = {1:'Khảm',2:'Khôn',3:'Chấn',4:'Tốn',6:'Càn',7:'Đoài',8:'Cấn',9:'Ly'};
+const HANH_CUNG = {Khảm:'Thủy',Ly:'Hỏa',Chấn:'Mộc',Tốn:'Mộc',Càn:'Kim',Đoài:'Kim',Cấn:'Thổ',Khôn:'Thổ'};
+
+const BAT_TRACH = {
+  Khảm:{tot:{'Sinh Khí':'Đông Nam','Thiên Y':'Đông','Diên Niên':'Nam','Phục Vị':'Bắc'},xau:{'Tuyệt Mệnh':'Tây Nam','Ngũ Quỷ':'Đông Bắc','Lục Sát':'Tây','Họa Hại':'Tây Bắc'}},
+  Ly:{tot:{'Sinh Khí':'Đông','Thiên Y':'Đông Nam','Diên Niên':'Bắc','Phục Vị':'Nam'},xau:{'Tuyệt Mệnh':'Tây Bắc','Ngũ Quỷ':'Tây','Lục Sát':'Đông Bắc','Họa Hại':'Tây Nam'}},
+  Chấn:{tot:{'Sinh Khí':'Nam','Thiên Y':'Bắc','Diên Niên':'Đông Nam','Phục Vị':'Đông'},xau:{'Tuyệt Mệnh':'Tây','Ngũ Quỷ':'Tây Bắc','Lục Sát':'Tây Nam','Họa Hại':'Đông Bắc'}},
+  Tốn:{tot:{'Sinh Khí':'Bắc','Thiên Y':'Nam','Diên Niên':'Đông','Phục Vị':'Đông Nam'},xau:{'Tuyệt Mệnh':'Đông Bắc','Ngũ Quỷ':'Tây Nam','Lục Sát':'Tây Bắc','Họa Hại':'Tây'}},
+  Càn:{tot:{'Sinh Khí':'Tây','Thiên Y':'Đông Bắc','Diên Niên':'Tây Nam','Phục Vị':'Tây Bắc'},xau:{'Tuyệt Mệnh':'Nam','Ngũ Quỷ':'Đông','Lục Sát':'Bắc','Họa Hại':'Đông Nam'}},
+  Đoài:{tot:{'Sinh Khí':'Tây Bắc','Thiên Y':'Tây Nam','Diên Niên':'Đông Bắc','Phục Vị':'Tây'},xau:{'Tuyệt Mệnh':'Đông Nam','Ngũ Quỷ':'Bắc','Lục Sát':'Nam','Họa Hại':'Đông'}},
+  Cấn:{tot:{'Sinh Khí':'Tây Nam','Thiên Y':'Tây Bắc','Diên Niên':'Tây','Phục Vị':'Đông Bắc'},xau:{'Tuyệt Mệnh':'Đông','Ngũ Quỷ':'Nam','Lục Sát':'Đông Nam','Họa Hại':'Bắc'}},
+  Khôn:{tot:{'Sinh Khí':'Đông Bắc','Thiên Y':'Tây','Diên Niên':'Tây Bắc','Phục Vị':'Tây Nam'},xau:{'Tuyệt Mệnh':'Bắc','Ngũ Quỷ':'Đông Nam','Lục Sát':'Đông','Họa Hại':'Nam'}}
+};
+
+let user = { nam: null, chiNam: null, cung: null };
+
+function xemPhongThuy() {
+    const namSinhRaw = document.getElementById('namSinh').value;
+    const nam = parseInt(namSinhRaw);
+    
+    if(!nam || nam < 1900 || nam > 2100) {
+        alert("⚠️ Vui lòng nhập năm sinh hợp lệ (Ví dụ: 1989).");
+        return;
+    }
+
+    const gt = document.getElementById('gioiTinh').value;
+    const chiIdx = (nam+8)%12;
+    const cungData = tinhCungPhi(nam, gt);
+    
+    user = { nam, chiNam: CHI[chiIdx], cung: cungData.ten };
+
+    document.getElementById('kqCanChi').innerText = `${CAN[(nam+6)%10]} ${CHI[chiIdx]}`;
+    const napam = NAP_AM[(nam-4) % 60];
+    document.getElementById('kqMenh').innerText = napam;
+    
+    document.getElementById('kqCung').innerText = cungData.ten;
+    document.getElementById('kqHanh').innerText = cungData.hanh;
+
+    const huong = BAT_TRACH[cungData.ten];
+    document.getElementById('huongTot').innerHTML = Object.entries(huong.tot).map(([k,v])=>`<li class="flex justify-between border-b border-green-100/50 pb-2"><span class="font-bold text-green-700">${k}</span><b class="text-inviNavy bg-green-100 px-2 py-0.5 rounded text-xs">${v}</b></li>`).join('');
+    document.getElementById('huongXau').innerHTML = Object.entries(huong.xau).map(([k,v])=>`<li class="flex justify-between border-b border-red-100/50 pb-2"><span class="font-bold text-red-700">${k}</span><b class="text-white bg-red-500 px-2 py-0.5 rounded text-xs">${v}</b></li>`).join('');
+
+    hienThiMauSac(cungData.hanh);
+    initLaBan(cungData.ten);
+    
+    document.getElementById('ketQua').classList.remove('hidden');
+    setTimeout(() => document.getElementById('ketQua').classList.remove('opacity-0'), 50);
+}
+
+function tinhCungPhi(nam, gioi){
+    const last2 = nam % 100;
+    let tong = Math.floor(last2/10) + (last2%10);
+    while(tong>9) tong = Math.floor(tong/10)+(tong%10);
+    if(tong===0) tong=9;
+    let so = (nam < 2000) ? (gioi==='nam' ? 10 - tong : 5 + tong) : (gioi==='nam' ? 9 - tong : 6 + tong);
+    if(so>9) so -= 9; if(so===0) so = 9; if(so===5) so = (gioi==='nam'?2:8);
+    return { ten: CUNG_MAP[so], hanh: HANH_CUNG[CUNG_MAP[so]] };
+}
+
+function hienThiMauSac(hanhCungPhi) {
+    const tuongSinh = {'Kim':'Thổ', 'Thủy':'Kim', 'Mộc':'Thủy', 'Hỏa':'Mộc', 'Thổ':'Hỏa'}; 
+    const tietKhi = {'Kim':'Thủy', 'Thủy':'Mộc', 'Mộc':'Hỏa', 'Hỏa':'Thổ', 'Thổ':'Kim'};   
+    const tuongKhac = {'Kim':'Hỏa', 'Thủy':'Thổ', 'Mộc':'Kim', 'Hỏa':'Thủy', 'Thổ':'Mộc'}; 
+    
+    const vatLieuData = {
+        'Kim': { mau: 'Trắng / Vàng kim / Ghi sáng', hex: 'linear-gradient(135deg, #f8fafc, #cbd5e1)', vl: 'Đá Volakas, Nẹp inox vàng gương, Cửa nhôm xingfa xám ghi', class: 'bg-slate-50 border-slate-200 text-slate-800' },
+        'Mộc': { mau: 'Xanh lá / Vân gỗ', hex: '#22c55e', vl: 'Gỗ tự nhiên sồi Nga, Sàn Conwood ngoài trời, Lam nhựa giả gỗ', class: 'bg-green-50 border-green-200 text-green-800' },
+        'Thủy': { mau: 'Đen / Xanh biển', hex: '#3b82f6', vl: 'Kính cường lực đen, Đá Marble tia chớp, Gạch mosaic hồ bơi', class: 'bg-blue-50 border-blue-200 text-blue-800' },
+        'Hỏa': { mau: 'Đỏ / Hồng / Đất nung', hex: '#ef4444', vl: 'Gạch gốm nung, Đèn LED ray nam châm (nhiệt độ màu ấm), Đồng đỏ', class: 'bg-red-50 border-red-200 text-red-800' },
+        'Thổ': { mau: 'Vàng đất / Nâu', hex: '#eab308', vl: 'Gạch 60x120 vân tự nhiên, Gỗ óc chó (Walnut), Đá Terrazzo', class: 'bg-amber-50 border-amber-200 text-amber-800' }
+    };
+
+    const renderBox = (title, hanh, type) => {
+        const data = vatLieuData[hanh];
+        let opacityClass = '', titleColor = '';
+        
+        if(type === 'tot') { titleColor = 'text-green-600'; opacityClass = 'hover:-translate-y-1 shadow-sm'; }
+        if(type === 'tiet') { titleColor = 'text-orange-500'; opacityClass = 'opacity-80 grayscale-[30%]'; }
+        if(type === 'ky') { titleColor = 'text-red-500'; opacityClass = 'opacity-60 grayscale-[60%]'; }
+        if(type === 'banmenh') { titleColor = 'text-inviNavy'; opacityClass = 'hover:-translate-y-1 shadow-md border-inviYellow'; }
+
+        return `
+        <div class="flex flex-col p-4 rounded-xl border ${data.class} ${opacityClass} transition-all duration-300">
+            <div class="flex justify-between items-start mb-2">
+                <span class="text-[10px] font-black ${titleColor} uppercase tracking-widest">${title}</span>
+                <span class="w-5 h-5 rounded-full shadow border border-black/10" style="background:${data.hex}"></span>
+            </div>
+            <span class="text-xl font-black uppercase">${hanh}</span>
+            <p class="text-[12px] mt-1 font-bold opacity-80">${data.mau}</p>
+            <p class="text-[11px] mt-2 italic border-t border-black/10 pt-2 opacity-90">Spec: ${data.vl}</p>
+        </div>`;
+    };
+
+    document.getElementById('kqMauSac').innerHTML = `
+        ${renderBox('TƯƠNG HỢP (BẢN MỆNH)', hanhCungPhi, 'banmenh')}
+        ${renderBox('ĐẠI CÁT (TƯƠNG SINH)', tuongSinh[hanhCungPhi], 'tot')}
+        ${renderBox('THẬN TRỌNG (TIẾT KHÍ)', tietKhi[hanhCungPhi], 'tiet')}
+        ${renderBox('ĐẠI KỴ (KHẮC NHẬP)', tuongKhac[hanhCungPhi], 'ky')}
+    `;
+    
+    document.getElementById('kqMauSac').className = 'grid grid-cols-1 md:grid-cols-2 gap-3';
+}
+
+function initLaBan(userCung = null) {
+    let vach24 = '';
+    for(let i=0; i<24; i++) {
+        let angle = i * 15 - 90;
+        let isMain = i % 3 === 0;
+        let rStart = isMain ? 185 : 190;
+        let x1 = 200 + rStart * Math.cos(Math.PI * angle / 180);
+        let y1 = 200 + rStart * Math.sin(Math.PI * angle / 180);
+        let x2 = 200 + 198 * Math.cos(Math.PI * angle / 180);
+        let y2 = 200 + 198 * Math.sin(Math.PI * angle / 180);
+        vach24 += `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="${isMain ? '#FFDF00' : '#475569'}" stroke-width="${isMain ? 1.5 : 1}"/>`;
+    }
+    document.getElementById('svg24Son').innerHTML = vach24;
+
+    const sectors = [
+        {ten: 'KHẢM', color: '#0A224F', txt: '#FFDF00'},
+        {ten: 'CẤN', color: '#1E293B', txt: '#cbd5e1'},
+        {ten: 'CHẤN', color: '#0A224F', txt: '#FFDF00'},
+        {ten: 'TỐN', color: '#1E293B', txt: '#cbd5e1'},
+        {ten: 'LY', color: '#0A224F', txt: '#FFDF00'},
+        {ten: 'KHÔN', color: '#1E293B', txt: '#cbd5e1'},
+        {ten: 'ĐOÀI', color: '#0A224F', txt: '#FFDF00'},
+        {ten: 'CÀN', color: '#1E293B', txt: '#cbd5e1'}
+    ];
+
+    let g = '';
+    sectors.forEach((s, i) => {
+        const startAngle = i * 45 - 22.5 - 90;
+        const endAngle = (i + 1) * 45 - 22.5 - 90;
+        const x1 = 200 + 185 * Math.cos(Math.PI * startAngle / 180);
+        const y1 = 200 + 185 * Math.sin(Math.PI * startAngle / 180);
+        const x2 = 200 + 185 * Math.cos(Math.PI * endAngle / 180);
+        const y2 = 200 + 185 * Math.sin(Math.PI * endAngle / 180);
+
+        g += `<path d="M 200 200 L ${x1} ${y1} A 185 185 0 0 1 ${x2} ${y2} Z" fill="${s.color}" stroke="#334155" stroke-width="0.5"/>`;
+        
+        const textAngle = startAngle + 22.5;
+        const tx = 200 + 125 * Math.cos(Math.PI * textAngle / 180);
+        const ty = 200 + 125 * Math.sin(Math.PI * textAngle / 180);
+        
+        if (userCung && FULL_BAT_TRACH_MAP[userCung]) {
+            const nhanCung = FULL_BAT_TRACH_MAP[userCung][s.ten];
+            g += `<text x="${tx}" y="${ty - 6}" fill="${s.txt}" font-size="11" font-weight="900" text-anchor="middle" dominant-baseline="middle" transform="rotate(${textAngle + 90}, ${tx}, ${ty})">${nhanCung}</text>`;
+            g += `<text x="${tx}" y="${ty + 8}" fill="${s.txt}" font-size="8" font-weight="600" opacity="0.6" text-anchor="middle" dominant-baseline="middle" transform="rotate(${textAngle + 90}, ${tx}, ${ty})">(${s.ten})</text>`;
+        } else {
+            g += `<text x="${tx}" y="${ty}" fill="${s.txt}" font-size="12" font-weight="900" text-anchor="middle" dominant-baseline="middle" transform="rotate(${textAngle + 90}, ${tx}, ${ty})">${s.ten}</text>`;
+        }
+    });
+    document.getElementById('svgSectors').innerHTML = g;
+}
+
+function rotateLaBan(deg) {
+    let val = parseInt(deg) || 0;
+    if(val > 360) val = 360;
+    if(val < 0) val = 0;
+
+    document.getElementById('degInput').value = val;
+    document.getElementById('sliderLaBan').value = val;
+    document.getElementById('laBanXoay').style.transform = `rotate(-${val}deg)`;
+}
+initLaBan();
+
+function renderPhiTinh2026() {
+    const data2026 = {
+        'DongNam': { sao: 9, ten: 'Cửu Tử', tinh: 'Đại Cát', mau: 'text-red-500' },
+        'Nam':     { sao: 5, ten: 'Ngũ Hoàng', tinh: 'Đại Hung', mau: 'text-orange-600' },
+        'TayNam':  { sao: 7, ten: 'Thất Xích', tinh: 'Hung', mau: 'text-slate-400' },
+        'Dong':    { sao: 8, ten: 'Bát Bạch', tinh: 'Cát', mau: 'text-inviYellow' },
+        'TrungCung': { sao: 1, ten: 'Nhất Bạch', tinh: 'Cát', mau: 'text-blue-400' },
+        'Tay':     { sao: 3, ten: 'Tam Bích', tinh: 'Hung', mau: 'text-green-500' },
+        'DongBac': { sao: 4, ten: 'Tứ Lục', tinh: 'Trung Tính', mau: 'text-green-400' },
+        'Bac':     { sao: 6, ten: 'Lục Bạch', tinh: 'Cát', mau: 'text-slate-200' },
+        'TayBac':  { sao: 2, ten: 'Nhị Hắc', tinh: 'Hung', mau: 'text-orange-400' }
+    };
+
+    const layout = ['DongNam', 'Nam', 'TayNam', 'Dong', 'TrungCung', 'Tay', 'DongBac', 'Bac', 'TayBac'];
+    let html = '';
+
+    layout.forEach(pos => {
+        const item = data2026[pos];
+        html += `
+            <div class="bg-inviNavy p-3 aspect-square flex flex-col justify-center items-center border border-white/5 rounded-md relative group hover:bg-slate-700 transition-all">
+                <span class="text-[8px] text-slate-500 uppercase font-bold absolute top-1.5">${pos === 'TrungCung' ? 'Trung Tâm' : pos}</span>
+                <span class="text-3xl font-black ${item.mau} my-1 drop-shadow-md">${item.sao}</span>
+                <span class="text-[9px] text-slate-300 font-medium">${item.ten}</span>
+                <div class="hidden group-hover:block absolute bottom-full mb-2 bg-slate-800 text-[9px] p-2 rounded shadow-xl z-50 w-24 text-center border border-white/10">
+                    Tính chất: <b class="${item.mau}">${item.tinh}</b>
+                </div>
+            </div>
+        `;
+    });
+
+    document.getElementById('gridPhiTinh').innerHTML = html;
+}
+
+// TÌM NGÀY BẰNG CƠ CHẾ CHẮN MÚI GIỜ (ISO STRING SLICE)
+function timNgayTrong3Thang() {
+    const box = document.getElementById('goiYNgay');
+    if(!user.nam) {
+        box.innerHTML = '<p class="text-red-400 text-xs italic mt-2 p-2 bg-red-400/10 rounded font-bold border border-red-500/20">⚠️ Vui lòng Phân Tích Mệnh Chủ trước!</p>';
+        return;
+    }
+
+    const inputVal = document.getElementById('ngayBatDau').value;
+    let parts = inputVal.split('-');
+    // Trích xuất trực tiếp toán học theo chuỗi đầu vào cấu hình, ép cứng không cho nhảy múi giờ tự động
+    let baseYear = parseInt(parts[0]);
+    let baseMonth = parseInt(parts[1]) - 1;
+    let baseDay = parseInt(parts[2]);
+
+    const xungMap = {'Tý':'Ngọ','Ngọ':'Tý','Sửu':'Mùi','Mùi':'Sửu','Dần':'Thân','Thân':'Dần','Mão':'Dậu','Dậu':'Mão','Thìn':'Tuất','Tuất':'Thìn','Tỵ':'Hợi','Hợi':'Tỵ'};
+    let bestDays = []; 
+    let html = '';
+
+    for(let i = 0; i <= 90; i++) {
+        // Khởi tạo đối tượng cục bộ dùng giờ trưa để triệt tiêu hoàn toàn độ trễ nhảy múi giờ sang ngày hôm trước
+        const jdBase = jdFromDate(baseDay, baseMonth + 1, baseYear);
+        const jdNow = jdBase + i; const solar = jdToDate(jdNow);
+        
+        let d = solar[0];
+        let m = solar[1];
+        let y = solar[2];
+        
+        const lunar = convertSolar2Lunar(d, m, y, 7);
+        const lDay = lunar[0]; 
+        const lMonth = lunar[1];
+        
+        const jd = jdFromDate(d, m, y); 
+        const canNgay = CAN[(jd + 9) % 10];
+        const chiNgay = CHI[(jd + 1) % 12]; 
+        
+        if(xungMap[user.chiNam] === chiNgay) continue;
+        if([5, 14, 23].includes(lDay)) continue;
+        if([3, 7, 13, 18, 22, 27].includes(lDay)) continue;
+
+        bestDays.push({ 
+            duong: `${String(d).padStart(2, '0')}/${String(m).padStart(2, '0')}`, 
+            am: `${lDay}/${lMonth}`, 
+            canChi: `${canNgay} ${chiNgay}` 
+        });
+    }
+
+    if(bestDays.length === 0) {
+        box.innerHTML = `
+            <div class="bg-red-500/10 border border-red-500/30 p-5 rounded-xl text-center mt-2">
+                <span class="text-4xl block mb-3">⚠️</span>
+                <p class="text-red-400 font-black text-sm uppercase mb-2">Chưa tìm thấy ngày đại cát</p>
+                <p class="text-slate-300 text-[11px] leading-relaxed px-2">Hệ thống quét 3 tháng từ mốc dự kiến nhưng chưa có ngày nào thực sự tối ưu với cung mệnh gia chủ.</p>
+                <hr class="border-red-500/20 my-4">
+                <p class="text-inviYellow font-black text-xs uppercase tracking-widest bg-inviYellow/10 border border-inviYellow/20 py-2.5 rounded shadow-inner">
+                    💡 Khuyến nghị: Mượn tuổi hợp để khởi công
+                </p>
+            </div>`; 
+        return;
+    }
+
+    bestDays.forEach((day) => {
+        html += `
+        <div class="bg-slate-900 p-4 rounded-xl border border-slate-600 flex justify-between items-center mb-2 hover:border-inviYellow transition-all group shadow-sm">
+            <div>
+                <span class="text-white font-black text-xl group-hover:text-inviYellow transition-colors">${day.duong}</span> 
+                <span class="text-[10px] text-slate-400 ml-1 uppercase">(Dương)</span>
+            </div>
+            <div class="text-right">
+                <span class="block text-[11px] text-slate-300 font-medium mb-1.5">Âm lịch: <b class="text-white">${day.am}</b></span> 
+                <span class="inline-block px-2.5 py-1 bg-green-500/20 text-green-400 text-[10px] font-bold rounded uppercase border border-green-500/30">Ngày ${day.canChi}</span>
+            </div>
+        </div>`;
+    });
+    
+    box.innerHTML = `<div class="sticky top-0 bg-slate-800 pb-2 mb-3 border-b border-slate-700 z-10 flex justify-between items-end pt-1"><span class="text-[11px] font-bold text-slate-400">Đã trải <b class="text-inviYellow">${bestDays.length}</b> ngày đẹp trong 3 tháng</span></div>` + html;
+}
+</script>
+
+<footer class="bg-slate-950 text-slate-500 text-sm py-8 border-t border-slate-800/50"><div class="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 text-center sm:flex sm:justify-between"><p>© 2026 CÔNG TY TNHH XÂY DỰNG VÀ THƯƠNG MẠI QUỐC TẾ INVI.</p><p class="mt-2 sm:mt-0">Đại diện: LƯU ĐỨC THỊNH</p></div></footer>
+</body>
+</html>
